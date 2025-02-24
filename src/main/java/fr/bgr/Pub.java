@@ -25,12 +25,12 @@ public class Pub {
 		if (boisson != null) {
 			this.bar.add(boisson);
 		} else {
-			LOGGER.warning("Boisson " + nom + " non disponible en cave.");
+			LOGGER.warning(() -> "Boisson " + nom + " non disponible en cave.");
 		}
 	}
 
 	/**
-	 * @param args
+	 * @param args Arguments de la fonction
 	 */
 	public static void main(String[] args) {
 		/* Création du pub */
@@ -48,7 +48,7 @@ public class Pub {
 		pub.cave.add(biere);
 		pub.cave.add(eau);
 
-		LOGGER.info("Cave initiale :\n" + pub.cave);
+		LOGGER.warning(() -> "Cave initiale :\n" + pub.cave);
 
 		pub.approvisionnerBar(BIERE);
 		pub.approvisionnerBar("Whisky");
@@ -63,11 +63,11 @@ public class Pub {
 		Boisson cafe = new Boisson("Café");
 		pub.bar.getBoissonChaude().add(cafe);
 
-		LOGGER.info(pub.cave.toString());
-		LOGGER.info(pub.bar.toString());
+		LOGGER.warning(pub.cave::toString);
+		LOGGER.warning(pub.bar::toString);
 
-		LOGGER.info("Boisson servie : " + pub.bar.serv("Café"));
-		LOGGER.info(pub.bar.toString());
+		LOGGER.warning(() -> "Boisson servie : " + pub.bar.serv("Café"));
+		LOGGER.warning(pub.bar::toString);
 	}
 
 	public Bar getBar() {
