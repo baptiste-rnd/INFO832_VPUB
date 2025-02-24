@@ -11,7 +11,7 @@ class BoissonTest {
 
     // Avant chaque test, on instancie les objets à tester
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         boissonSansAlcool = new Boisson("Eau");
         boissonAvecAlcool = new Boisson("Bière", 5.0f);
     }
