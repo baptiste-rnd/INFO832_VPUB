@@ -110,7 +110,7 @@ class BarTest {
     @Test
     void ajouterBoissonNull() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
-            bar.add((Boisson) null); // On tente d'ajouter une boisson null
+            bar.add((Boisson) null);
         });
         assertEquals("La boisson ne peut pas être null", exception.getMessage(), "Le bar doit lancer une exception si on essaie d'ajouter une boisson null");
     }
