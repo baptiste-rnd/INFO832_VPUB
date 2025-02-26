@@ -21,6 +21,10 @@ public class Bar {
 
 	// Ajout d'une boisson
 	public void add(Boisson boisson){
+		if (boisson == null) {
+			throw new NullPointerException("La boisson ne peut pas être null");
+		}
+
 		if(boisson.getAlcoolise()){
 			if (!this.boissonAlcoolisee.contains(boisson)) {
 				this.boissonAlcoolisee.add(boisson);
