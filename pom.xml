@@ -7,42 +7,37 @@
     <groupId>fr.bgr</groupId>
     <artifactId>vpub</artifactId>
     <version>1.0</version>
-
     <name>INFO832 : Qualité et test logiciel - TP</name>
-    <description>Virtual Pub est une bibliothèque Java permettant de gérer un
-        bar virtuel avec un système d’approvisionnement et de service des boissons.
-        Elle prend en charge différentes catégories de boissons, y compris les
-        boissons de base (alcoolisées, non alcoolisées et chaudes) ainsi que les
-        cocktails (avec ou sans alcool). L’approvisionnement se fait via une cave,
-        et les clients peuvent être servis uniquement à partir du bar. Ce projet
-        inclut également des tests unitaires pour assurer la fiabilité du système.</description>
+    <description>Virtual Pub est une bibliothèque Java permettant de gérer un bar virtuel avec un système d’approvisionnement et de service des boissons.</description>
     <url>https://github.com/baptiste-rnd/INFO832_VPUB</url>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <sonar.projectKey>vpub</sonar.projectKey>
+        <sonar.projectName>VPub</sonar.projectName>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.tests>src/test/java</sonar.tests>
+        <sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
+        <junit.version>5.9.3</junit.version>
+        <surefire.version>2.22.2</surefire.version>
+        <jacoco.version>0.8.12</jacoco.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.3</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.3</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -54,14 +49,13 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.9.1.2184</version>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>${jacoco.version}</version>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -75,31 +69,13 @@
                     </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
+                <version>${surefire.version}</version>
             </plugin>
-
         </plugins>
     </build>
-
-    <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
-
-        <sonar.projectKey>vpub</sonar.projectKey>
-        <sonar.projectName>VPub</sonar.projectName>
-        <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.sources>src/main/java</sonar.sources>
-        <sonar.tests>src/test/java</sonar.tests>
-        <sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
-    </properties>
 
     <reporting>
         <plugins>
@@ -108,17 +84,15 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.12.1</version>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${surefire.version}</version>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>${jacoco.version}</version>
                 <reportSets>
                     <reportSet>
                         <id>jacoco</id>
@@ -130,5 +104,4 @@
             </plugin>
         </plugins>
     </reporting>
-
 </project>
