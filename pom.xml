@@ -6,7 +6,33 @@
 
     <groupId>fr.bgr</groupId>
     <artifactId>vpub</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+
+    <name>INFO832 : Qualité et test logiciel - TP</name>
+    <description>Virtual Pub est une bibliothèque Java permettant de gérer un
+        bar virtuel avec un système d’approvisionnement et de service des boissons.
+        Elle prend en charge différentes catégories de boissons, y compris les
+        boissons de base (alcoolisées, non alcoolisées et chaudes) ainsi que les
+        cocktails (avec ou sans alcool). L’approvisionnement se fait via une cave,
+        et les clients peuvent être servis uniquement à partir du bar. Ce projet
+        inclut également des tests unitaires pour assurer la fiabilité du système.</description>
+    <url>https://github.com/baptiste-rnd/INFO832_VPUB</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -62,19 +88,27 @@
         <sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.3</version>
-            <scope>test</scope>
-        </dependency>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.12.1</version>
+            </plugin>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.3</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
 </project>
